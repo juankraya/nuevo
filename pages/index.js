@@ -14,7 +14,7 @@ const prueba = useRef(null)
 
 const callback = (entradas) => {
   if(entradas[0].isIntersecting){
-    prueba.current.src = "/10.jpg"
+    prueba.current.src = "https://joseperezmora.es/fotos/2/21279.jpg"
     setCargando(false)
   }
  
