@@ -2,34 +2,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
 import { useEffect, useState, useRef } from 'react'
+import Imageload from './components/Imageload'
 
 
 export default function Home() {
 
-const [page, setPage] = useState(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"])  
+const [page, setPage] = useState(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"])  
 const [cargando, setCargando] = useState(true)
-
-const prueba = useRef(null)
-
-
-const callback = (entradas) => {
-  if(entradas[0].isIntersecting){
-    prueba.current.src = "https://joseperezmora.es/fotos/2/21279.jpg"
-    setCargando(false)
-  }
- 
-}
-
-useEffect(()=>{
-
- const observador = new IntersectionObserver(callback, {
-  rootMargin: "0px 0px 50px 0px",
-  threshold: 0.1
- }) 
-
- observador.observe(prueba.current)
-
-},[prueba])
 
 
   return (
@@ -46,76 +25,30 @@ useEffect(()=>{
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.js</code>
           </p>
-          <button
-            onClick={()=>{
-              add()
-            }}
-           >Add</button>
          </div>
 
-      
-      
-      
-       <div className={styles.center}>
-        <Image
-         src={'/1.jpg'}
-         className={styles.logo}
-         alt="Next.js Logo"
-         width={500}
-         height={500}
-         priority
-        />
-     </div>
+    <div>
+          <Image src="/assets/1.jpg" className={styles.logo} alt="prueba" width={500} height={500}/> 
           
-     <div className={styles.center}>
-        <Image
-         src={'/1.jpg'}
-         className={styles.logo}
-         alt="Next.js Logo"
-         width={500}
-         height={500}
-         priority
-        />
-     </div>
-          
-     <div className={styles.center}>
-        <Image
-         src={'/1.jpg'}
-         className={styles.logo}
-         alt="Next.js Logo"
-         width={500}
-         height={500}
-         priority
-        />
-     </div>
-          
-     <div className={styles.center}>
-        <Image
-         src={'/1.jpg'}
-         className={styles.logo}
-         alt="Next.js Logo"
-         width={500}
-         height={500}
-         priority
-        />
      </div>
      <div>
-     {cargando ? <h2>Cargando...</h2> : <h2>Cargada</h2>}
+          <Image src="/assets/2.jpg" className={styles.logo} alt="prueba" width={500} height={500}/> 
+          
+     </div> 
+      <div>
+          <Image src="/assets/3.jpg" className={styles.logo} alt="prueba" width={500} height={500}/> 
      </div>
-     
-     <div className={styles.center}>
-         <Image
-         ref={prueba}
-         className={styles.logo}
-         alt="Next.js Logo"
-         width={500}
-         height={500}
-         priority
-        />
+     <div>
+        {page.map ( (src, i) => 
+          <div className={styles.logo} key={i}>
+             <Imageload src={src}/>
+          </div>
+          )}
      </div>
+      
 
       
       </main>
     </>
   )
-}
+  }
